@@ -10,7 +10,6 @@ import com.demo.springboottesting.entities.Person;
 import com.demo.springboottesting.repos.PersonRepo;
 import com.demo.springboottesting.utilities.MyUtilityBean;
 import java.util.List;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -47,37 +46,32 @@ class PersonServiceTest {
 
     @Test
     void getAllPerson() {
-        //given
+        //Given
         Person person = new Person(1, "Ahnis", "Gotham");
         Person person2 = new Person(2, "Saksham", "New york");
-        //When
         given(personRepo.findAll())
             .willReturn(List.of(person, person2));
 
-
+        //When
         var personList = personService.getAllPerson();
         //Then
-        //Make sure to import assertThat From org.assertj.core.api package
         assertThat(personList).hasSize(2);
-
-
     }
 
     @Test
     void createPersons() {
-        //given
+        //Given
         Person person = new Person(1, "Ahnis", "Gotham");
         Person person2 = new Person(2, "Saksham", "New york");
-        //When
         given(personRepo.save(any()))
             .willReturn(any());
 
-        ArgumentCaptor<Person> personCaptor = ArgumentCaptor.forClass(Person.class);
-
+        //When
         personService.createPerson(person);
         personService.createPerson(person2);
 
         //Then
+        ArgumentCaptor<Person> personCaptor = ArgumentCaptor.forClass(Person.class);
         verify(myUtilityBean, times(2)).addPerson(personCaptor.capture());
         assertThat(personCaptor.getAllValues().get(0)).isEqualTo(person);
 

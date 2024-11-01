@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class PersonService {
-    //No need to use @Autowired when using Constructor Injection
-    //Dependencies are final
 
     private final PersonRepo repo;
 
