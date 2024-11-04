@@ -63,7 +63,6 @@ class PersonServiceSpringBootTest {
         var personList = personService.getAllPerson();
 
         //Then
-        //Make sure to import assertThat From org.assertj.core.api package
         assertThat(personList).hasSize(2);
 
     }
