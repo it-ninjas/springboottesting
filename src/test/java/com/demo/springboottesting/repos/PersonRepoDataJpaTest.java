@@ -29,6 +29,12 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
  *   <artifactId>spring-boot-starter-test</artifactId>
  *   <scope>test</scope>
  * </dependency>
+ *
+ * <dependency>
+ *   <groupId>com.h2database</groupId>
+ *   <artifactId>h2</artifactId>
+ *   <scope>test</scope>
+ * </dependency>
  */
 @DataJpaTest(showSql = true)
 class PersonRepoDataJpaTest {
