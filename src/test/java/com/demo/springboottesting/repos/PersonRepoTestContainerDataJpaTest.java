@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.demo.springboottesting.entities.Person;
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +55,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 //Optional: We specify to use only our own DB connection settings below.
 //If you still want to use DB settings from /src/test/resources/application.properties comment out the following line:
 @AutoConfigureTestDatabase( replace = Replace.ANY )
-//Set properties for thess specific tests:
+//Set properties for these specific tests:
 @TestPropertySource( properties = {"spring.jpa.hibernate.ddl-auto=create-drop"} )
 //Tell the testrunner to use testcontainers:
 @Testcontainers
