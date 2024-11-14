@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.demo.springboottesting.entities.Person;
 import com.demo.springboottesting.services.PersonService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.List;
 import org.hamcrest.core.StringContains;
 import org.junit.jupiter.api.Test;
@@ -44,6 +45,9 @@ class PersonControllerWebMvcTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @MockBean
     private PersonService personService;
 
@@ -73,11 +77,13 @@ class PersonControllerWebMvcTest {
             p.setPersonId(1);
             return p;
         });
+        Person dto = new Person(1, "Alexandra", "Biel");
 
         //when
         mockMvc.perform(post("/createPerson")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"personName\": \"Alexandra\", \"personCity\": \"Biel\"}"))
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(dto)))
+
         //then
             .andDo(print())
             .andExpect(jsonPath("$.personName").value("Alexandra"))

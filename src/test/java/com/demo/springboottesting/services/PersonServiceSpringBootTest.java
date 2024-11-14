@@ -42,7 +42,7 @@ import org.springframework.test.context.jdbc.Sql;
  *   <scope>test</scope>
  * </dependency>
  */
-@SpringBootTest()
+@SpringBootTest
 class PersonServiceSpringBootTest {
 
     @Autowired
